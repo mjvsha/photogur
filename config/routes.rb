@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   post 'pictures' => 'pictures#create'
 
+  delete 'pictures/:id' => 'pictures#destroy'
+
 end
 
 #match any get request for the localhost3000/pictures to the index method found
