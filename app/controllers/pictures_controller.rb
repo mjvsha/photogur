@@ -1,6 +1,7 @@
 class PicturesController < ApplicationController
   def index
     @pictures = Picture.all
+    @older_than = Picture.more_than_month
   end
 
   def show
