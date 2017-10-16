@@ -20,3 +20,26 @@
   </p>
 
 <%end %>
+
+<% if @picture.errors.any? %>
+  <div id = "error-explanation">
+    <h2><%= pluralize(@picture.errors.count, "error") %> prohibited this article from being saved </h2>
+
+    <ul>
+      <% @picture.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+    <%end%>
+
+    <!-- <%if @picture.errors.any? %>
+    <ul>
+      <% @picture.errors.messages.each do |attr, msg| %>
+        <% msg.each do |val| %>
+        <li><%=val %> </li>
+          <% end %>
+          <%end%>
+        </ul>
+    </ul>
+    <%end %> -->
