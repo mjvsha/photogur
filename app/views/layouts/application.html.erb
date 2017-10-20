@@ -10,5 +10,23 @@
 
 <%= yield %>
 
+<p class = "userinfo">
+  <% if current_user %>
+  Signed in as <%= current_user.email %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
+  <% else %>
+  <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
+  <% end %>
+</p>
+
 </body>
 </html>
+
+<!--
+a helper method is a ethod written or the view, designed to be reusable anywhere within the website
+it cleans up the view code by sepearating out some logic
+helpers are used to extract complex logic out of the view so you can organize your code better
+1. extracts some complexity out of the view
+2. makes view logic easier to test
+moves complexity out of the view
+it is used to perform a repetievt ask comon across mutiple classes, preventing us from repeating the same code again ad again
+ -->
