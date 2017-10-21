@@ -9,7 +9,15 @@ class ApplicationController < ActionController::Base
 
   #we create a helper method here to show the log in status of the user
   #this will talk to the associated view, and display a message according to the status of the current_user variable
-  
+
 
   helper_method :current_user
+
+  def ensure_logged_in
+    unless current_user
+      flash[:alert] = "Please log in"
+      redirect_to new_session_url
+    end
+  end
+  
 end

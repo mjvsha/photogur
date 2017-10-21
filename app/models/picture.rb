@@ -1,6 +1,7 @@
 class Picture < ApplicationRecord
+  belongs_to :user
   #:artist, :title, :url
-  validates :artist, :url, presence: { message: "unfortunately, this cant be blank "} 
+  validates :artist, :url, presence: { message: "unfortunately, this cant be blank "}
   #title must be min 3 char, max 20 char
   validates :title, length: {in: 3..20}
   #url must be unique from other urls
