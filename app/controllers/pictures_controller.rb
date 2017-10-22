@@ -2,7 +2,8 @@ class PicturesController < ApplicationController
 
   before_action :ensure_logged_in, except: [:show, :index]
   before_action :load_picture, only: [:show, :edit, :update, :destroy]
-  # before_action :ensure_user_owns_picture
+  #^ this method must come before the ensure_user_owns_picture because we want the code runnig in the right order 
+  before_action :ensure_user_owns_picture, only:[:edit, :update, :destroy]
   #lets compare the crrent_user's id to the suer_id of the picture that the user id trying to edit, update, delete
 
   def index
@@ -26,6 +27,13 @@ class PicturesController < ApplicationController
     #with this line of code, we can remove the exact line from the edit, update and destroy actions elsewhere in our code
 
   end
+
+def ensure_user_owns_picture
+  unless current_user == @picture.user_id
+    flash[:alert] = 'Please log in to do anything'
+    redirect_to new_session_url
+  end
+end
 
 
   def create
