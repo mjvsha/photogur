@@ -18,8 +18,7 @@ ActiveRecord::Schema.define(version: 20171020202505) do
     t.string   "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "users_id"
-    t.index ["users_id"], name: "index_pictures_on_users_id"
+    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade do |t|
